@@ -107,6 +107,6 @@ public class Character extends GameObject {
 
     public void leaveFaction(Faction ally) {
         ally.getPlayers().remove(this);
-        joinedFanctions.remove(this);
+        joinedFanctions.remove(ally);
     }
 }

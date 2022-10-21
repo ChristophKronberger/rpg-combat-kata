@@ -1,15 +1,11 @@
 package org.example;
 
 public class GameObject {
-    protected int old;
-    protected boolean isAlive;
-    protected int position;
+    protected Position position;
     protected Health health;
 
     public GameObject() {
-        this.old = 1000;
-        this.isAlive = true;
-        this.position = 0;
+        position = new Position(0);
         this.health = new Health(1000);
     }
 

@@ -61,7 +61,7 @@ public class Character extends GameObject {
     }
 
     private boolean isNotInRange(GameObject other) {
-        int difference = other.position - this.position;
+        int difference = other.position.x() - this.position.x();
         return Math.abs(difference) > this.range;
     }
 
@@ -91,12 +91,14 @@ public class Character extends GameObject {
     }
 
     public void moveRight() {
-        this.position++;
+        this.position = this.position.right();
     }
 
     public void moveLeft() {
-        this.position--;
+        this.position = this.position.left();
     }
+
+
 
     public void joinFaction(Faction faction) {
         faction.take(this);

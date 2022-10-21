@@ -26,6 +26,6 @@ public class GameObject {
     }
 
     public int getPosition() {
-        return this.position;
+        return this.position.x();
     }
 }

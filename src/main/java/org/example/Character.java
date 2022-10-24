@@ -33,7 +33,7 @@ public class Character extends GameObject {
     }
 
     public int getLevel() {
-        return this.newlevel.value();
+        return this.level.value();
     }
 
     public void dealDamageTo(Character other) {
@@ -41,7 +41,7 @@ public class Character extends GameObject {
         if (isNotInRange(other)) return;
         if (isInSameFactionThan(other)) return;
         int damage = 100;
-        other.receiveDamage((int) (damage * newlevel.getMultiplicator(other)));
+        other.receiveDamage((int) (damage * level.getMultiplicator(other)));
     }
 
     public void dealDamageTo(GameObject object) {
@@ -67,7 +67,7 @@ public class Character extends GameObject {
 
 
     public void levelUp(int level) {
-       this.newlevel = this.newlevel.levelUp(level);
+       this.level = this.level.levelUp(level);
     }
 
     public int getAttackRange() {
@@ -81,8 +81,6 @@ public class Character extends GameObject {
     public void moveLeft() {
         this.position = this.position.left();
     }
-
-
 
     public void joinFaction(Faction faction) {
         faction.take(this);

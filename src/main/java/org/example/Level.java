@@ -6,7 +6,7 @@ public record Level(int value) {
         return new Level(this.value() + value);
     }
 
-    public boolean isAtLeastFiveLevelLower(Character other) {
+    private boolean isAtLeastFiveLevelLower(Character other) {
         return this.value() >= other.getLevel() + 5;
     }
     private boolean isAtLeastFiveLevelHigherThan(Character other) {

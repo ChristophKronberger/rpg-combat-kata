@@ -29,7 +29,7 @@ public class Character extends GameObject {
         if(this.isInSameFactionThan(other)) other.heal(i);
     }
     public void heal(int i) {
-        this.health.increaseBy(i);
+        this.newhealth = this.newhealth.increaseBy(i);
     }
 
     public int getLevel() {

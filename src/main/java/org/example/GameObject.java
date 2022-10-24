@@ -2,23 +2,24 @@ package org.example;
 
 public class GameObject {
     protected Position position;
-    protected Health health;
+    protected NewHealth newhealth;
+
 
     public GameObject() {
         this.position = new Position(0);
-        this.health = new Health(1000);
+        this.newhealth = new NewHealth(1000);
     }
 
     public int getHealth() {
-        return this.health.getValue();
+        return this.newhealth.value();
     }
 
     public void receiveDamage(int damage) {
-      this.health.decreaseBy(damage);
+      this.newhealth = this.newhealth.decreaseBy(damage);
     }
 
     public boolean isAlive() {
-        return !this.health.isDead();
+        return !this.newhealth.isDead();
     }
 
     public int getPosition() {

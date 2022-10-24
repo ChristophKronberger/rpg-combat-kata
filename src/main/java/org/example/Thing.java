@@ -7,6 +7,6 @@ public class Thing extends GameObject {
 
     public Thing(int i) {
         super();
-        this.newhealth = new NewHealth(i);
+        this.health = new Health(i);
     }
 }

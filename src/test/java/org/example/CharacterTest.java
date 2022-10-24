@@ -111,15 +111,15 @@ public class CharacterTest {
 
     @Test
     public void character_should_have_attack_range(){
-        Character ch = new Character("melee");
+        Character ch = new Character(FighterType.MELEE);
         assertThat(ch.getAttackRange()).isEqualTo(2);
-        Character ch2  = new Character("ranged");
+        Character ch2  = new Character(FighterType.RANGED);
         assertThat(ch2.getAttackRange()).isEqualTo(20);
     }
 
     @Test
     public void character_should_have_position(){
-        Character ch = new Character("melee");
+        Character ch = new Character(FighterType.MELEE);
         assertThat(ch.getPosition()).isZero();
         ch.moveRight();
         assertThat(ch.getPosition()).isEqualTo(1);
@@ -129,8 +129,8 @@ public class CharacterTest {
 
     @Test
     public void character_can_only_attack_inRange(){
-        Character ch = new Character("melee"); //Range 2
-        Character enemy = new Character("ranged"); // Range 20
+        Character ch = new Character(FighterType.MELEE); //Range 2
+        Character enemy = new Character(FighterType.RANGED); // Range 20
         enemy.moveRight();
         enemy.moveRight();
         enemy.moveRight();

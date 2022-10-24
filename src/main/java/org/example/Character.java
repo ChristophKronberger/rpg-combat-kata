@@ -18,10 +18,11 @@ public class Character extends GameObject {
         this.range = 0;
     }
 
-    public Character(String type) {
+    public Character(FighterType type) {
         this();
-        if(type.equalsIgnoreCase("melee")) range=2;
-        if(type.equalsIgnoreCase("ranged"))range=20;
+        new Range(type);
+        if(type == FighterType.MELEE) range=2;
+        if(type == FighterType.RANGED) range=20;
     }
 
 

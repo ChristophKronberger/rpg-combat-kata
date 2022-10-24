@@ -6,16 +6,15 @@ import java.util.List;
 
 public class Character extends GameObject {
 
-    private int level;
-    private Level newlevel;
+
+    private Level level;
     private int range;
 
     List<Faction> joinedFanctions = new ArrayList<>();
 
     public Character() {
         super();
-        this.newlevel = new Level(1);
-        this.level = 1;
+        this.level = new Level(1);
         this.range = 0;
     }
 

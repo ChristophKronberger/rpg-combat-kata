@@ -1,32 +1,27 @@
 package org.example;
-public class Health {
 
-    private  int value;
+public record Health(int value) {
 
-    public Health(int value) {
-        this.value = value;
-    }
-    
-    public void increaseBy(int value) {
-        if (isDead()) return;
-        this.value += value;
-        if (this.value > 1000) {
-            this.value = 1000;
+    public Health increaseBy(int value) {
+        if (isDead()) return this;
+        int expectedHealth = this.value()+value;
+
+        if(expectedHealth >= 1000) {
+            return new Health(1000);
+        } else {
+            return new Health(expectedHealth);
         }
     }
 
-    public void decreaseBy(int value){
-        this.value -= value;
-        if (isDead()) {
-            this.value = 0;
-        }
+    public Health decreaseBy(int value){
+        if (isDead()) return this;
+        int expectedHealth = this.value()-value;
+        if(expectedHealth <= 0) return new Health(0);
+        return new Health(expectedHealth);
     }
 
     public boolean isDead() {
         return this.value <= 0;
     }
 
-    public int getValue() {
-        return value;
-    }
 }

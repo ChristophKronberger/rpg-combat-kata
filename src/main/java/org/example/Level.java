@@ -13,7 +13,7 @@ public record Level(int value) {
         return this.value() <= other.getLevel() - 5;
     }
 
-    private double getMultiplicator(Character other) {
+    public double getMultiplicator(Character other) {
         if (isAtLeastFiveLevelLower(other)) {
             return 1.5;
         } else if (isAtLeastFiveLevelHigherThan(other)) {

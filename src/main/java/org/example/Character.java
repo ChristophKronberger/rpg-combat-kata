@@ -7,13 +7,14 @@ import java.util.List;
 public class Character extends GameObject {
 
     private int level;
-
+    private Level newlevel;
     private int range;
 
     List<Faction> joinedFanctions = new ArrayList<>();
 
     public Character() {
         super();
+        this.newlevel = new Level(1);
         this.level = 1;
         this.range = 0;
     }
@@ -33,7 +34,7 @@ public class Character extends GameObject {
     }
 
     public int getLevel() {
-        return this.level;
+        return this.newlevel.value();
     }
 
     public void dealDamageTo(Character other) {
@@ -41,7 +42,7 @@ public class Character extends GameObject {
         if (isNotInRange(other)) return;
         if (isInSameFactionThan(other)) return;
         int damage = 100;
-        other.receiveDamage((int) (damage * getMultiplicator(other)));
+        other.receiveDamage((int) (damage * newlevel.getMultiplicator(other)));
     }
 
     public void dealDamageTo(GameObject object) {
@@ -65,25 +66,9 @@ public class Character extends GameObject {
         return Math.abs(difference) > this.range;
     }
 
-    private double getMultiplicator(Character other) {
-        if (isAtLeastFiveLevelLower(other)) {
-            return 1.5;
-        } else if (isAtLeastFiveLevelHigherThan(other)) {
-            return 0.5;
-        }
-        return 1;
-    }
-
-    private boolean isAtLeastFiveLevelHigherThan(Character other) {
-        return this.level <= other.getLevel() - 5;
-    }
-
-    private boolean isAtLeastFiveLevelLower(Character other) {
-        return this.level >= other.getLevel() + 5;
-    }
 
     public void levelUp(int level) {
-        this.level += level;
+       this.newlevel = this.newlevel.levelUp(level);
     }
 
     public int getAttackRange() {

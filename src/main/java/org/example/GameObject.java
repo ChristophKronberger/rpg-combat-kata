@@ -5,7 +5,7 @@ public class GameObject {
     protected Health health;
 
     public GameObject() {
-        position = new Position(0);
+        this.position = new Position(0);
         this.health = new Health(1000);
     }
 
